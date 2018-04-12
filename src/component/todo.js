@@ -9,6 +9,7 @@ import Typography from 'material-ui/Typography';
 import TextField from 'material-ui/TextField';
 import PropTypes from 'prop-types';
 import { addTodo } from '../actions'
+import { Container } from './container';
 
 const styles = theme => ({
     button: {
@@ -68,6 +69,8 @@ class Todo extends Component {
                 onChange={this.handleChange(this.state.text)}
                 margin="normal"
             />
+
+            <Container />
 
             <Button
                 onClick={this.addTodo(this.state.text)}
