@@ -36,8 +36,10 @@ class Todo extends Component {
         }
     }
 
+    // componentWillReceiveProps(props) {
+    //     debugger
+    // }
     handleChange = name => event => {
-        debugger
         this.setState({ text: event.target.value })
     }
 
@@ -49,7 +51,6 @@ class Todo extends Component {
     render() {
 
         const { classes } = this.props;
-
         return (<div>
             {/* <div className={classes.root}> */}
 
@@ -76,24 +77,21 @@ class Todo extends Component {
     }
 }
 
-const mapStateToProps = (state, ownProps) => {
-    return {
-        active: ownProps.filter === state.visibilityFilter
-    }
-}
+const mapStateToProps = (state) => ({
+    ...state,
+    todo: state
+})
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-        onClick: () => {
-            debugger
-            dispatch(setVisibilityFilter(ownProps.filter))
-        },
-        addTodo: (text) => {
-            dispatch(addTodo(text))
-            debugger
-        }
+const mapDispatchToProps = (dispatch, props) => ({
+    onClick: (filter) => {
+        dispatch(setVisibilityFilter(filter))
+    },
+    addTodo: (text) => {
+        debugger
+        dispatch(addTodo(text))
+
     }
-}
+})
 
 TextField.prototypes = {
     classes: PropTypes.object.isRequired
