@@ -8,8 +8,8 @@ import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import TextField from 'material-ui/TextField';
 import PropTypes from 'prop-types';
-import { addTodo } from '../actions'
-import { Container } from './container';
+import { addTodo, removeTodo } from '../actions'
+import Container from './container';
 
 const styles = theme => ({
     button: {
@@ -70,7 +70,10 @@ class Todo extends Component {
                 margin="normal"
             />
 
-            <Container />
+            <Container
+                todos={this.props.todo.todos}
+                removeTodo={this.props.removeTodo}
+            />
 
             <Button
                 onClick={this.addTodo(this.state.text)}
@@ -93,6 +96,9 @@ const mapDispatchToProps = (dispatch, props) => ({
         debugger
         dispatch(addTodo(text))
 
+    },
+    removeTodo: (id) => {
+        dispatch(removeTodo(id))
     }
 })
 
